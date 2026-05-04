@@ -1,80 +1,108 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Dark Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
 
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
+    const updateThemeIcon = (isDark) => {
+        if (isDark) {
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+    };
 
-            const targetId = this.getAttribute("href");
-            const targetSection = document.querySelector(targetId);
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme === 'dark');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Fallback to system preference
+        body.setAttribute('data-theme', 'dark');
+        updateThemeIcon(true);
+    }
 
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: "smooth"
-                });
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme === 'dark');
+    });
+
+    // 2. Smooth Scrolling
+    document.querySelectorAll('nav a, .cta-button').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
 
-    const hiddenElements = document.querySelectorAll(".hidden");
-
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                obs.unobserve(entry.target); // animate once
+    // 3. Scroll Reveal Animation
+    const reveals = document.querySelectorAll('.section, .skill-category, .achievement-card, .timeline-item');
+    
+    const revealOnScroll = () => {
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 100;
+            
+            if (elementTop < windowHeight - elementVisible) {
+                el.classList.add('active');
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    };
 
-    hiddenElements.forEach(el => observer.observe(el));
+    // Add reveal class to all elements
+    reveals.forEach(el => el.classList.add('reveal'));
+    
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Initial check
 
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
+    // 4. Parallax Profile Picture Effect
+    const profilePicContainer = document.querySelector('.profile-pic-container');
+    if (profilePicContainer) {
+        document.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            const moveX = (clientX - centerX) / 40;
+            const moveY = (clientY - centerY) / 40;
+            
+            profilePicContainer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    }
 
-    window.addEventListener("scroll", () => {
-        let currentSection = "";
+    // 5. Active Link Highlighting
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
 
+    window.addEventListener('scroll', () => {
+        let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-
-            if (window.scrollY >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
+            if (window.pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
             }
         });
 
         navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${currentSection}`) {
-                link.classList.add("active");
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
             }
         });
-    });
-
-});
-
-const profilePic = document.querySelector(".profile-pic");
-
-if (profilePic) {
-    document.addEventListener("mousemove", e => {
-        const x = (window.innerWidth / 2 - e.clientX) / 30;
-        const y = (window.innerHeight / 2 - e.clientY) / 30;
-
-        profilePic.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
-    });
-
-    document.addEventListener("mouseleave", () => {
-        profilePic.style.transform = "translate(0,0) scale(1)";
-    });
-}
-document.querySelectorAll(".cert-link").forEach(link => {
-    link.addEventListener("mouseenter", () => {
-        link.style.textShadow = "0 0 8px rgba(0,123,255,0.6)";
-    });
-
-    link.addEventListener("mouseleave", () => {
-        link.style.textShadow = "none";
     });
 });

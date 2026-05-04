@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -14,155 +17,159 @@
     <header id="navbar">
         <a href="#" class="logo">ANUGRAH</a>
         <nav>
-            <a href="#bio" class="nav-link active">About</a>
+            <a href="#bio" class="nav-link">About</a>
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#education" class="nav-link">Education</a>
             <a href="#experience" class="nav-link">Projects</a>
             <a href="#achievements" class="nav-link">Achievements</a>
             <a href="#socials" class="nav-link">Contact</a>
         </nav>
+        <button id="theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fas fa-moon"></i>
+        </button>
     </header>
 
     <main>
 
         <section id="bio" class="section hero">
-            <div class="bio-content hidden">
+            <div class="bio-content">
                 <h1>Hello, I'm Anugrah Upadhyay</h1>
                 <p class="tagline">
-                    Computer Science Student | Java & Web Developer
+                    Computer Science Student | Android & Web Developer
                 </p>
                 <p>
-                    I am a motivated Computer Science student with a strong foundation
-                    in Java, Data Structures, and Web Development. I enjoy building
-                    clean, responsive websites and continuously improving my problem-solving
-                    skills through hands-on projects.
+                    I am a second-year Computer Science student at SRM Institute of Science And Technology with a 9.6 CGPA. 
+                    I have a strong foundation in Java, Data Structures, and Web Development, and I enjoy building clean, 
+                    responsive applications that solve real-world problems.
                 </p>
                 <a href="#socials" class="cta-button">Contact Me</a>
             </div>
 
-            <div class="hero-image hidden photo-reveal">
-    <img src="anugrahPhoto.jpg" alt="Anugrah Upadhyay" class="profile-pic">
-</div>
-
-        </section>
-
-        <section id="skills" class="section hidden">
-            <h2>Skills</h2>
-
-
-                <div class="skill-item">
-                    <h4>Java</h4>
-                </div>
-
-                <div class="skill-item">
-                    <h4>HTML & CSS</h4>
-                </div>
-
-                <div class="skill-item">
-                    <h4>JavaScript</h4>
-                </div>
-
-                <div class="skill-item">
-                    <h4>Data Structures & Algorithms</h4>
-                </div>
-
-        </section>
-
-        <section id="education" class="section hidden">
-            <h2>Education</h2>
-
-            <div class="timeline">
-              <div class="timeline-item">
-                    <h3>School</h3>
-                    <p class="institution">
-                        Rani LaxmiBai Public School Jhansi
-                    </p>
-                </div>
-                <div class="timeline-item">
-                    <h3>Bachelor of Technology</h3>
-                    <p class="institution">
-                        SRM Institute of Science And Technology | Year 2024-28
-                    </p>
+            <div class="hero-image">
+                <div class="profile-pic-container">
+                    <img src="anugrahPhoto.jpg" alt="Anugrah Upadhyay" class="profile-pic">
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="section hidden">
-            <h2>Projects</h2>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Java, Kotlin, JavaScript, HTML, CSS, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Mobile App Development</h3>
+                    <p>Android Development</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <p>React.js, Node.js</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <p>MySQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Core CS</h3>
+                    <p>Data Structures & Algorithms, OOPs, Computer Networks, DBMS, OS</p>
+                </div>
+            </div>
+        </section>
 
+        <section id="education" class="section">
+            <h2>Education</h2>
             <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Bachelor of Technology (CSE)</h3>
+                    <p class="institution">SRM Institute of Science And Technology | 2024-2028</p>
+                    <p>Current CGPA: 9.6</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Senior Secondary (Class XII)</h3>
+                    <p class="institution">Rani LaxmiBai Public School, Jhansi | 2024</p>
+                    <p>Percentage: 90.2%</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Secondary (Class X)</h3>
+                    <p class="institution">The Aryans' School | 2022</p>
+                    <p>Percentage: 91%</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2>Projects</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Skill Gap Analyzer</h3>
+                    <p class="institution">Web Development | Team Project</p>
+                    <ul>
+                        <li>Automated comparison of user skills against industry standards.</li>
+                        <li>Generates personalized learning paths and course recommendations.</li>
+                        <li>Implemented responsive UI for optimal user experience.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h3>Tic Tac Toe Web Application</h3>
+                    <p class="institution">HTML, CSS, JavaScript</p>
+                    <ul>
+                        <li>Created an interactive game with smooth animations.</li>
+                        <li>Implemented game logic and win-condition detection.</li>
+                    </ul>
+                </div>
                 <div class="timeline-item">
                     <h3>Portfolio Website</h3>
                     <p class="institution">HTML, CSS, JavaScript</p>
                     <ul>
-                        <li>Designed a responsive personal portfolio website</li>
-                        <li>Focused on clean UI and accessibility</li>
+                        <li>Designed a premium personal portfolio with dark mode.</li>
+                        <li>Optimized for speed and SEO.</li>
                     </ul>
-                </div>          
+                </div>
             </div>
         </section>
 
-        <section id="achievements" class="section hidden">
-    <h2>Achievements & Certifications</h2>
+        <section id="achievements" class="section">
+            <h2>Achievements & Certifications</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <h4>Java & DSA Certifications</h4>
+                    <p>Completed comprehensive courses on Udemy covering professional Java development and advanced Algorithms.</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>Coding Activity</h4>
+                    <p>Active problem solver on LeetCode and HackerRank, focusing on algorithmic complexity and efficiency.</p>
+                </div>
+                <div class="achievement-card">
+                    <h4>Committee Involvement</h4>
+                    <p>Active member of the Technical and Creatives committees at SRM IST.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="achievements-grid">
-
-        <div class="achievement-card">
-            <h4>Data Structures & Algorithms</h4>
-            <p>Completed DSA course covering arrays, recursion, trees, and graphs.</p>
-            <a href="https://drive.google.com/your-dsa-certificate"
-               target="_blank"
-               class="cert-link">
-               View Certificate →
-            </a>
-        </div>
-
-        <div class="achievement-card">
-            <h4>Java Programming</h4>
-            <p>Completed Java course with OOPs, collections, and multithreading.</p>
-            <a href="https://drive.google.com/your-java-certificate"
-               target="_blank"
-               class="cert-link">
-               View Certificate →
-            </a>
-        </div>
-
-        <div class="achievement-card">
-            <h4>Web Development</h4>
-            <p>Built responsive websites using HTML, CSS, and JavaScript.</p>
-            <a href="https://drive.google.com/your-web-certificate"
-               target="_blank"
-               class="cert-link">
-               View Certificate →
-            </a>
-        </div>
-
-    </div>
-</section>
-
-        <section id="socials" class="section contact hidden">
+        <section id="socials" class="section contact">
             <h2>Contact</h2>
-
             <div class="social-links">
-             <a href="https://www.linkedin.com/in/anugrah-upadhyay-b82618324/" target="_blank">
-                <i class="fab fa-linkedin"></i>
-             </a>
-             <a href="https://github.com/anugrah678" target="_blank">
-                <i class="fab fa-github"></i>
-             </a>
-             <a href="https://instagram.com/anugrah_aayu" target="_blank">
-                <i class="fab fa-instagram"></i>
-             </a>
+                <a href="https://www.linkedin.com/in/anugrahupadhyay/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/anugrah678" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://instagram.com/anugrah_aayu" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
 
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/anugrah-upadhyay-b82618324/" target="_blank">LinkedIn</a>
+            <div class="text-links">
+                <a href="mailto:anuanugrah900@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/anugrahupadhyay/" target="_blank">LinkedIn</a>
                 <a href="https://github.com/anugrah678" target="_blank">GitHub</a>
                 <a href="https://instagram.com/anugrah_aayu" target="_blank">Instagram</a>
-
             </div>
 
-            <a href="resume.pdf" class="cta-button primary" download>
+            <a href="Anugrah Upadhyay resume.pdf" class="cta-button primary" download>
                 Download Resume
             </a>
         </section>
@@ -170,7 +177,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Anugrah Upadhyay</p>
+        <p>&copy; 2026 Anugrah Upadhyay</p>
     </footer>
 
     <script src="script.js"></script>
